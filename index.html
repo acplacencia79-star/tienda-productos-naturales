@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FWP Productos Naturales | Tienda Online</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Encabezado y Navegación-->
+   <header>
+    <div class="container nav-container">
+      <div class="brand">
+        <h1>FWP Productos Naturales</h1>
+        <span class="slogan">Salud & Bienestar</span>
+      </div>
+      <button id="btn-abrir-carrito" class="btn-carrito" aria-label="Ver Carrito de Compras">
+        🛒 Carrito(<span id="contador-carrito">0</span>)
+      </button>
+    </div>
+   </header>
+
+  <!-- Panel lateral de carrito de compras -->
+   <aside id="panel-carrito" class="panel-carrito oculto">
+    <div class = "panel-header">
+      <h3>Tu carrito de compras</h3>
+      <button id="btn-cerrar-carrito" class="btn-cerrar" aria-label="Cerrar Carrito de Compras">
+        &times;
+      </button>
+    </div>
+    
+    <ul id="lista-carrito" class="lista-carrito">
+        <li class="carrito-vacio">No hay productos seleccionados</li>
+    </ul>
+
+    <div class="panel-footer">
+      <div class="total-contenedor">
+        <span>Total:</span>
+        <span id="total-precio">S/ 0.00</span>
+      </div>
+      <button id="btn-vaciar" class="btn-secundario">Vaciar carrito</button>
+      <button id="btn-checkout" class="btn-primario">Finalizar Compra</button>
+    </div>
+  </aside>
+
+  <main class="container">
+    <!-- Barra de busqueda -->
+    <section class="toolbar">
+      <div class="search-box">
+        <label for="buscador">Buscar Productos:</label>
+        <input type="text" id="buscador" placeholder="Ejem. Moringa, Renova...">
+      </div>
+      <button id="btn-toggle-formulario" class="btn-accion">+ Nuevo Producto</button>
+    </section>
+
+    <!--Modulo de administracion para carga de productos-->
+    <section id="seccion-formulario" class="admin-panel oculto">
+      <h3>Registrar Nuevo Producto</h3>
+      <form id="formulario-producto">
+        <div class="form-grid">
+          <div class="form-group">
+             <label for="prod-nombre">Nombre:</label>
+             <input type="text" id="prod-nombre" required placeholder="Ejem. aceite de copaiba 30ml">
+          </div>
+
+          <div class="form-group">
+            <label for="prod-categoria">Categoría:</label>
+            <select id="prod-categoria" required>
+              <option value="Suplementos">Suplementos</option>
+              <option value="Superalimentos">Superalimentos</option>
+              <option value="Cuidado Personal">Cuidado Personal</option>
+              <option value="Infusiones">Infusiones</option>
+            </select>
+            </div>
+
+          <div class="form-group">
+            <label for="prod-precio">Precio (S/):</label>
+            <input type="number" id="prod-precio" step="0.1" min="1" required placeholder="Ejem. 25.50">
+          </div>
+
+          <div class="form-group">
+            <label for="prod-desc">Descripción:</label>
+            <input type="text" id="prod-desc" required placeholder="Ejem. Aceite esencial de copaiba 100% puro">
+          </div>
+        </div>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn-primario">Registrar Producto</button>
+          <button type="button" id="btn-cancelar-form" class="btn-secundario">Cancelar</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Catálogo de productos -->
+    <section>
+      <h2>Catálogo de Productos Naturales</h2>
+      <div id="contenedor-productos" class="grid-productos">
+        <!-- Los productos se cargarán aquí dinámicamente usando Java script-->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 página Venta de productos naturales - autor: Milton Aldhair Carmen Placencia</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
