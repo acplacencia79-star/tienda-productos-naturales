@@ -56,7 +56,7 @@ const btnCheckout = document.getElementById('btn-checkout');
 
 // Módulo de creación
 const seccionFormulario = document.getElementById('seccion-formulario');
-const btnToggleForm = document.getElementById('btn-toggle-formulario');
+
 const btnCancelarForm = document.getElementById('btn-cancelar-form');
 const formulario = document.getElementById('formulario-producto');
 
@@ -190,7 +190,7 @@ btnCheckout.addEventListener('click', () => {
 });
 
 // Mostrar / Ocultar panel de nuevo producto
-btnToggleForm.addEventListener('click', () => seccionFormulario.classList.toggle('oculto'));
+
 btnCancelarForm.addEventListener('click', () => seccionFormulario.classList.add('oculto'));
 
 // Guardar nuevo producto desde el formulario
@@ -220,3 +220,50 @@ formulario.addEventListener('submit', (e) => {
 // ==========================================
 renderizarCatalogo(productos);
 renderizarCarrito();
+
+
+// ==========================================
+// CONTROL DE ACCESO (ADMINISTRACIÓN)
+// ==========================================
+let esAdministrador = false;
+const CLAVE_SECRETA = "admin123";
+
+// Referencias a elementos del modal
+const btnLoginAdmin = document.getElementById('btn-login-admin');
+const modalLogin = document.getElementById('modal-login');
+const inputPassword = document.getElementById('input-password');
+const btnValidarPass = document.getElementById('btn-validar-pass');
+const btnCancelarLogin = document.getElementById('btn-cancelar-login');
+const mensajeErrorLogin = document.getElementById('mensaje-error-login');
+
+// Abrir modal o cerrar sesión
+btnLoginAdmin.addEventListener('click', () => {
+  if (esAdministrador) {
+    esAdministrador = false;
+    btnLoginAdmin.textContent = "⚙️ Gestión del Negocio";
+    seccionFormulario.classList.add('oculto');
+    alert("Sesión de administración finalizada.");
+  } else {
+    modalLogin.classList.remove('oculto');
+    inputPassword.value = '';
+    mensajeErrorLogin.classList.add('oculto');
+    inputPassword.focus();
+  }
+});
+
+// Cerrar modal sin autenticar
+btnCancelarLogin.addEventListener('click', () => {
+  modalLogin.classList.add('oculto');
+});
+
+// Validar credencial
+btnValidarPass.addEventListener('click', () => {
+  if (inputPassword.value === CLAVE_SECRETA) {
+    esAdministrador = true;
+    modalLogin.classList.add('oculto');
+    seccionFormulario.classList.remove('oculto'); // Muestra panel de carga
+    btnLoginAdmin.textContent = "🔒 Cerrar Modo Gestión";
+  } else {
+    mensajeErrorLogin.classList.remove('oculto');
+  }
+});

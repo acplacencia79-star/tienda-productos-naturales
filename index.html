@@ -50,7 +50,7 @@
         <label for="buscador">Buscar Productos:</label>
         <input type="text" id="buscador" placeholder="Ejem. Moringa, Renova...">
       </div>
-      <button id="btn-toggle-formulario" class="btn-accion">+ Nuevo Producto</button>
+      
     </section>
 
     <!--Modulo de administracion para carga de productos-->
@@ -103,8 +103,36 @@
   <footer>
     <div class="container">
       <p>&copy; 2026 página Venta de productos naturales - autor: Milton Aldhair Carmen Placencia</p>
+      <button id="btn-login-admin" class="btn-enlace-admin" type="button">
+        ⚙️ Gestión del negocio
+      </button>
     </div>
   </footer>
+  <div id="modal-login" class="modal-fondo-oculto" role="dialog" aria-modal="true" aria-labelledby="titulo-admin">
+    <div class="modal-caja">
+      <h4 id="titulo admin">Acceso administrativo</h4>
+      <p>Ingresa contraseña maestra para gestion de catálogo: </p>
+      <div class="campo-auth">
+        <input
+          type="password"
+          id="input-password"
+          placeholder="*********"
+          autocomplete="current-password"
+          required
+        >
+      </div>
+
+      <div class="modal-acciones">
+        <button id="btn-validar-pass" type="button" class="btn-primario">Ingresar</button>
+        <button id="btn-cancelar-login" type="button" class="btn-secundario">Cancelar</button>
+      </div>
+
+      <p id="mensaje-error-login" class="texto-error oculto" aria-live="assertive">
+        Contraseña no autorizada
+      </p>
+    </div>
+
+  </div>
 
   <script src="script.js"></script>
 </body>
